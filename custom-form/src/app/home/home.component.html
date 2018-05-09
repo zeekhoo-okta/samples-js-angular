@@ -1,20 +1,18 @@
-<h1 class="ui header">Custom Login Page with Sign In Widget</h1>
+<h1 class="ui header">Custom Login Page (Without using the Sign In Widget)</h1>
 <div *ngIf="!isAuthenticated">
   <p>If you‘re viewing this page then you have successfully started this Angular application.</p>
   <p>This example shows you how to use the
     <a href="https://github.com/okta/okta-oidc-js/tree/master/packages/okta-angular">Okta Angular Library</a>
-    and the
-    <a href="https://github.com/okta/okta-signin-widget">Okta Sign-In Widget</a>
-    to add the
+    to implement a custom login form/page and add the
     <a href="https://developer.okta.com/authentication-guide/implementing-authentication/implicit">Implicit Flow</a>
     to your application.
-    This combination is useful when you want to leverage the features of the Sign-In Widget, and the authentication helper components from the okta-angular module.
+    This example is useful when you want to build 100% custom UI but still leverage the helper components from the okta-angular module.
   </p>
   <p>
     Once you have logged in you will be redirected through your authorization server (the issuer defined in config) to create a session for Single-Sign-On (SSO).
     After this you will be redirected back to the application with an ID Token and Access Token. The tokens will be stored in local storage for future use.
   </p>
-  <button id="login-button" class="ui primary button" role="button" routerLink="/login-widget">Login-widget</button>
+  <button id="login-button" class="ui primary button" role="button" routerLink="/login-custom">Login-Custom</button>
 </div>
 
 <div *ngIf="isAuthenticated && userName">

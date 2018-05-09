@@ -12,6 +12,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import {
@@ -25,14 +26,17 @@ import sampleConfig from './.samples.config';
 const oktaConfig = Object.assign({
   onAuthRequired: ({oktaAuth, router}) => {
     // Redirect the user to your custom login page
-    router.navigate(['/login-widget']);
+    router.navigate(['/login-custom']);
   }
 }, sampleConfig.oidc);
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+
+// custom login form component
 import { LoginComponent } from './login/login.component';
-import { MessagesComponent } from './messages/messages.component';
+
+// protected component
 import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
@@ -45,17 +49,12 @@ const appRoutes: Routes = [
     component: OktaCallbackComponent,
   },
   {
-    path: 'login-widget',
+    path: 'login-custom',
     component: LoginComponent,
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [ OktaAuthGuard ],
-  },
-  {
-    path: 'messages',
-    component: MessagesComponent,
     canActivate: [ OktaAuthGuard ],
   },
 ];
@@ -65,11 +64,11 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     ProfileComponent,
-    MessagesComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     OktaAuthModule.initAuth(oktaConfig),
     RouterModule.forRoot(appRoutes),

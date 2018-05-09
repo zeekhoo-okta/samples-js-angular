@@ -1,0 +1,20 @@
+<div class="row">
+
+    <div class="ui header">
+      <h1>Sign In</h1>
+    </div>
+
+    <form class="ui form">
+      <div class="field">
+        <input type="text" placeholder="E-mail" [(ngModel)]="username" name="username"/>
+      </div>
+      <div class="field">
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password"/>
+      </div>
+      <div class="field">
+        <button type="button" class="ui button" (click)="login()">Sign in</button>
+      </div>
+    </form>
+
+</div>
+
