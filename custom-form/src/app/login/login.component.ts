@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       if (sessionToken) {
         // Okta's auth-js does the heavy lifting here. Not only will getWithRedirect make the oauth authorize request,
         // it will perform token validation upon return of token(s), and throw exception if token is invalid
-        // Here, we request idToken and accessTokens, which are redirected to the redirectUri...the handler is handlerAuthentication(), below
+        // Here, we request idToken and accessTokens, which are redirected to the redirectUri (which should be routed to OktaCallbackComponent from @okta/okta-angular)
         this.oktaAuth.token.getWithRedirect({
             responseType: ['id_token', 'token'],
             sessionToken: sessionToken,
