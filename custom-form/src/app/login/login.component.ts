@@ -11,7 +11,6 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import * as OktaAuth from '@okta/okta-auth-js';
 
 import config from '../.samples.config';
@@ -32,11 +31,9 @@ export class LoginComponent implements OnInit {
     redirectUri: config.oidc.redirectUri,
   });
 
-  constructor(private router: Router) {}
+  constructor() {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   async login() {
     var transaction = await this.oktaAuth.signIn({ username : this.username, password : this.password });
